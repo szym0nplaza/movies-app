@@ -1,0 +1,6 @@
+[submodule "movies-app-backend"]
+	path = movies-app-backend
+	url = git@github.com:szym0nplaza/movies-app-backend.git
+[submodule "movies-app-frontend"]
+	path = movies-app-frontend
+	url = git@github.com:szym0nplaza/movies-app-frontend.git
