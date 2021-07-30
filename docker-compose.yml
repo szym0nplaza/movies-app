@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    db:
+        image: postgres
+        environment: 
+            - POSTGRES_DB=movie_app
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=zaq1@WSX
+    bank-site-backend:
+        build: ./movies-app-backend
+        volumes:
+            - ./movies-app-backend:/movies-app-backend
+        ports:
+            - 8000:8000
+        depends_on:
+            - db
+    bank-site-frontend:
+        build: ./movies-app-frontend
+        volumes: 
+            - ./movies-app-frontend:/movies-app-frontend
+        ports: 
+            - 3000:3000
