@@ -6,3 +6,5 @@
 3. Run migrations (helpfull link: https://stackoverflow.com/questions/33992867/how-do-you-perform-django-database-migrations-when-using-docker-compose)
 
 ![alt text](https://github.com/szym0nplaza/movies-app/blob/main/screens/screen1.png)
+### More screenshots
+- https://github.com/szym0nplaza/movies-app/tree/main/screens
