@@ -3,12 +3,14 @@ version: "3"
 services:
     db:
         image: postgres
+        container_name: 'db'
         environment: 
             - POSTGRES_DB=movies_app
             - POSTGRES_USER=user
             - POSTGRES_PASSWORD=zaq1@WSX
     movies-app-backend:
         build: ./movies-app-backend
+        container_name: 'backend'
         volumes:
             - ./movies-app-backend:/movies-app-backend
         ports:
@@ -17,7 +19,21 @@ services:
             - db
     movies-app-frontend:
         build: ./movies-app-frontend
+        container_name: 'frontend'
         volumes: 
             - ./movies-app-frontend:/movies-app-frontend
         ports: 
             - 3000:3000
+    celery:
+        build: ./movies-app-backend
+        container_name: 'celery'
+        command: celery -A movies_app worker -l INFO
+        volumes:
+            - ./movies-app-backend:/movies-app-backend
+        depends_on:
+            - movies-app-backend
+        links:
+            - redis
+    redis:
+        image: redis:latest
+        container_name: rd01
